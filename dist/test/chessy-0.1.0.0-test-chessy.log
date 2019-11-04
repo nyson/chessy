@@ -1,0 +1,4 @@
+Test suite test-chessy: RUNNING...
+bad
+Test suite test-chessy: FAIL
+Test suite logged to: dist/test/chessy-0.1.0.0-test-chessy.log
