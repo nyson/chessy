@@ -14,6 +14,12 @@ First, an example
 2. Nf3 Nc6
 3. Bb5 a6
 
+> firstGame :: Board
+> firstGame = game $ do
+>   move "e2" "e4" >> move "e7" "e5" -- 1. e4  e5
+>   move "g1" "f3" >> move "b8" "c6" -- 2. Nf3 Nc6
+>   move "f1" "b5" >> move "a7" "a6" -- 3. Bb5 a6
+
 Let's break these down to the smallest possible pieces
 
 1. e4 e5
@@ -75,10 +81,5 @@ The next move is straightforward given what we know now:
 
 > newtype Notation = Notation [Row]
 > data Row = Row {white :: Move, black :: Move}
-> data Move = Move Piece (Maybe Position) Position
+> data Move = Move Piece (Maybe Pos) Pos
 
-> move :: Board -> Move -> Either String Board
-> move b (Move _ Nothing _) = Left "Cannot infer position"
-> move b (Move _ (Just p1) p2) = case b @@ p1 of
->   Just cell -> error $ "cell found: " ++ show cell
->   Nothing -> error "no cell here"
